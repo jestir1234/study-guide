@@ -10,6 +10,8 @@ Given an integer array nums, find the contiguous subarray within an array(contai
 
     Resources
     https: //www.programcreek.com/2014/03/leetcode-maximum-product-subarray-java/
+
+    Original: https: //leetcode.com/problems/maximum-product-subarray/
 */
 
 
