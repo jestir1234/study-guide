@@ -8,7 +8,11 @@ Given an integer array nums, find the contiguous subarray within an array(contai
     Output: 6
     Explanation: [2, 3] has the largest product 6.
 
+    Resources
+    https: //www.programcreek.com/2014/03/leetcode-maximum-product-subarray-java/
 */
+
+
 
 /**
  * @param {number[]} nums
