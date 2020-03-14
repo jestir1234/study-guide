@@ -61,6 +61,11 @@
         Time Complexity - O(nm) where n is "nums" and m is target / Min(...nums)
         Space Complexity - O(mn) 
 
+        Follow up:
+        If negative numbers were allowed in the array it would lead to infinite combinations.
+        For example [3, 2, 4, 1, -1]. Here -1 could be used infinitely to reduce to value and 1 could be used to increase it.
+        We would need to add the limitation that each number can only be used once in a combination.
+
  */
 
 var combinationSum4 = function (nums, target, memo = {}) {
@@ -95,4 +100,51 @@ var combinationSum4 = function (nums, target, memo = {}) {
         combos += recursed;
     }
     return combos;
+};
+
+
+/*
+    DP Solution
+
+    Strategy - Bottom up approach
+        - Build a dp array starting from 0 to the target. 
+        - At each index or sub target "i" we calculate the # of combos by 
+          looping through nums and for each num "j" find and aggregate previously 
+          stored solutions at dp[i - nums[j]].
+
+          The idea is looking at the relationship between the current sub-target i
+          and nums[j]. i - nums[j] = some number "k". We look up "k" in the dp table to find
+          the # of combos that add up to "k". Since "k" + nums[j] = i, we add it to the aggregate of combos.
+          
+          For example let's say i = 5 and nums = [1, 3]:
+          5 - 1 = 4
+          We know we have a 1 to use to add up to 5 so we look for dp[4].
+          dp[4] should have all the combinations using nums [1, 3] that add up to 4.
+          So we can add that to our aggregate since we can use those combos and just add 1.
+
+          Moving on we have
+          5 - 3 = 2
+          We know we have a 3 to use to add up to 5 so we look for dp[2].
+          All combos that add up to 2 can be used since we'll add 3 to them to get 5.
+        
+        - We start with dp[0] = 1 because we know at any index i if nums contains i we can count it by itself as a combo
+
+        Time complexity is O(mn) where m is the target and n is nums
+        Space complexity is O(m) where m is the target
+*/
+
+var combinationSum4 = function (nums, target) {
+    const dp = new Array(target + 1).fill(0);
+    dp[0] = 1;
+
+    for (let i = 1; i < target + 1; i++) {
+        dp[i] = nums.reduce((acc, val) => {
+            if (i - val >= 0) {
+                acc = acc + dp[i - val];
+            }
+            return acc;
+        }, 0);
+    }
+
+    return dp[target];
 };
