@@ -33,6 +33,9 @@
     - While loops end when end/beginning of string is reached or palindrome is not satisfied
 
     - keep track of the longest string in original function and return
+
+    Time Complexity O(n * 2n) = O(n^2)
+    Space Complexity O(n^2)
 */
 
 /**
