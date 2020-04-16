@@ -61,7 +61,8 @@
 
     - If any of the DFS searches return true we can exit the loop and return from the function. 
 
-    
+    Time Complexity - O(n * s) where n is spaces on the board and s is the chars in the string
+    Space Complexity - O(n) where n is the spaces on the board
 */
 
 var exist = function(board, word) {
