@@ -83,7 +83,7 @@ class MinHeap {
         let rightIdx = (currentIdx * 2) + 1;
 
         // conditions to resort heap
-        while ((this.heap[leftIdx] !== undefined && this.heap[rightIdx] !== undefined) && (this.heap[currentIdx] > this.heap[leftIdx] || this.heap[currentIdx] > this.heap[rightIdx])) {
+        while ((this.heap[leftIdx] !== undefined && this.heap[rightIdx] !== undefined) && (this.heap[currentIdx] >= this.heap[leftIdx] || this.heap[currentIdx] >= this.heap[rightIdx])) {
             if (this.heap[leftIdx] < this.heap[rightIdx]) {
                 let temp = this.heap[currentIdx]
                 this.heap[currentIdx] = this.heap[leftIdx];
